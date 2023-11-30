@@ -1,14 +1,25 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
-  username: { type: "string", required: true },
-  email: { type: "string", required: true },
-  authentication: {
-    password: { type: "string", required: true, select: false },
-    salt: { type: "string", select: false },
-    sessionToken: { type: "string", select: false },
+const userSchema = new mongoose.Schema(
+  {
+    username: { type: "string", required: [true, "Please add username"] },
+    email: {
+      type: "string",
+      required: [true, "Please add email address"],
+      unique: [true, "Email address already taken"],
+    },
+    authentication: {
+      password: {
+        type: "string",
+        required: [true, "Please add password"],
+        select: false,
+      },
+      salt: { type: "string", select: false },
+      sessionToken: { type: "string", select: false },
+    },
   },
-});
+  { timestamps: true }
+);
 
 export const UserModel = mongoose.model("User", userSchema);
 

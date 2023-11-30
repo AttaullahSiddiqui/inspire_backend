@@ -3,6 +3,8 @@ import express from "express";
 import { authentication, random } from "../helpers";
 import { validationResult } from "express-validator";
 
+//@desc Authenticate User
+//@route POST /auth/login
 export const login = async (req: express.Request, res: express.Response) => {
   try {
     const { email, password } = req.body;
@@ -39,6 +41,8 @@ export const login = async (req: express.Request, res: express.Response) => {
   }
 };
 
+//@desc Register new user
+//@route POST /auth/register
 export const register = async (req: express.Request, res: express.Response) => {
   try {
     const errors = validationResult(req);

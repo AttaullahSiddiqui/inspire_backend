@@ -7,6 +7,8 @@ import {
   updateUserById,
 } from "../db/users";
 
+//@desc Get all users
+//@route GET /users
 export const getAllUsers = async (
   req: express.Request,
   res: express.Response
@@ -20,6 +22,8 @@ export const getAllUsers = async (
   }
 };
 
+//@desc Delete user
+//@route DELETE /users/:id
 export const deleteUser = async (
   req: express.Request,
   res: express.Response
@@ -36,6 +40,8 @@ export const deleteUser = async (
   }
 };
 
+//@desc Update user
+//@route PATCH /users/:id
 export const updateUser = async (
   req: express.Request,
   res: express.Response
